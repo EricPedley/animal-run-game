@@ -16,7 +16,13 @@ _global_script_class_icons={
 [application]
 
 config/name="First-Game-Jam"
+run/main_scene="res://Scenes/World.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/size/borderless=true
+window/stretch/aspect="keep"
 
 [rendering]
 
