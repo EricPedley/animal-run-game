@@ -8,7 +8,7 @@ extents = Vector2( 8.05151, 8.03375 )
 [node name="Node" type="Node"]
 
 [node name="1" type="Sprite" parent="."]
-position = Vector2( 261.903, 420.144 )
+position = Vector2( 149.198, 414.588 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 16, 16 )
