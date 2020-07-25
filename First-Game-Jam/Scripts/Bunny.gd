@@ -38,10 +38,16 @@ func _physics_process(_delta):
 	if(position.y > 600):
 		respawn()
 	
+		
+	
+	
 	
 
 func respawn():
 	position = respawn_point
+	
+func set_respawn(respawn):
+	respawn_point = respawn
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
