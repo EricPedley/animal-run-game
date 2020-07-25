@@ -19,16 +19,17 @@ func _physics_process(delta):
 	if player!=null:
 		add_collision_exception_with(player)
 		if not following and box.overlaps_body(player):
+			player.jumpCoords=[]
 			following=true
 			velocity.y=-200
 		if following and abs(player.position.x-position.x)>100:
 			var target = Vector2.ZERO
 			if player.jumpCoords.size()>0:
-				var pv=player.jumpCoords.pop_front()#position and velocity at the point where the player jumped
+				var pv=player.jumpCoords[0]#position and velocity at the point where the player jumped
 				print(pv)
 				target = pv[0]
-				if position.distance_to(target)<100:
-					print("should jump")
+				if is_on_floor() and position.distance_to(target)<20:
+					player.jumpCoords.pop_front()
 					jump_target_vector=pv[1]
 			else:
 				target=player.position
