@@ -5,7 +5,11 @@ extends "Animal.gd"
 # var a = 2
 # var b = "text"
 onready var sprite = $AnimatedSprite
+var dismountJump = false
 # Called when the node enters the scene tree for the first time.
+func _ready():
+	setOffset(120)
+
 func _physics_process(delta):
 	var acceleration = 10
 	var deceleration = 50
@@ -26,9 +30,6 @@ func _physics_process(delta):
 	elif is_on_floor():
 		velocity.x=velocity.move_toward(Vector2.ZERO,deceleration).x
 	velocity.y+=GRAVITY
-	if ridden and Input.is_action_pressed("space") and velocity.y>0:
-		velocity.y-=GRAVITY/2
-		velocity.y = min(velocity.y,90)
 	if is_on_floor() and is_on_wall():
 		velocity.y=-300
 	if not sprite==null:
@@ -44,6 +45,9 @@ func _physics_process(delta):
 		velocity=jump_target_vector
 	if Input.is_action_just_pressed("space") and ridden and is_on_floor():
 		velocity.y= -600
+	if dismountJump:
+		dismountJump=false
+		velocity.y+=300
 	velocity=move_and_slide(velocity,Vector2.UP)
 	if position.y > 600:
 		if ridden:
@@ -62,9 +66,11 @@ func _on_Area2D_input_event(viewport, event, shape_idx):
 		if ridden:
 			riddenBox.disabled=true
 			player.position.y-=20
+			player.dismountJump=true
+			dismountJump=true
 			player.riding="none"
 		else:
-			player.riding="Chicken"
+			player.riding="Mushroom"
 			riddenBox.disabled=false
 			position=player.position
 		ridden=!ridden
