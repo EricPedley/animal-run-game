@@ -28,7 +28,7 @@ func _physics_process(delta):
 				var pv=player.jumpCoords[0]#position and velocity at the point where the player jumped
 				print(pv)
 				target = pv[0]
-				if is_on_floor() and position.distance_to(target)<20:
+				if is_on_floor() and abs(position.x-target.x)<20:
 					player.jumpCoords.pop_front()
 					jump_target_vector=pv[1]
 			else:
