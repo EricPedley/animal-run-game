@@ -4,7 +4,8 @@ extends KinematicBody2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-const SPEED = 300
+const SPEED = 250
+const GRAVITY = 30
 onready var ray = $RayCast2D
 var velocity = Vector2.ZERO
 var respawn_point = Vector2(500, 300)
@@ -37,7 +38,7 @@ func _physics_process(_delta):
 		sprite.play("Idle")
 		return
 	velocity.x=velocity.move_toward(input_vector*SPEED,100).x
-	velocity.y+=20
+	velocity.y+=GRAVITY
 	if not sprite==null:
 		if is_on_floor() || ray.is_colliding() == true:
 			

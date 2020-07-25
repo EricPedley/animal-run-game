@@ -4,7 +4,8 @@ extends KinematicBody2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-const SPEED = 350
+const SPEED = 300
+const GRAVITY = 30
 onready var player = get_node("../Bunny")
 onready var box = get_node("Area2D")
 var velocity = Vector2.ZERO
@@ -47,9 +48,9 @@ func _physics_process(delta):
 		velocity.x=velocity.move_toward(input_vector*SPEED,acceleration).x
 	else:
 		velocity.x=velocity.move_toward(Vector2.ZERO,deceleration).x
-	velocity.y+=20
+	velocity.y+=GRAVITY
 	if ridden and Input.is_action_pressed("space") and velocity.y>0:
-		velocity.y-=10
+		velocity.y-=GRAVITY/2
 		velocity.y = min(velocity.y,90)
 	if is_on_floor() and is_on_wall():
 		velocity.y=-300
@@ -75,6 +76,7 @@ func _physics_process(delta):
 			position = player.respawn_point
 		else:
 			position=player.position
+		velocity=Vector2.ZERO
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
