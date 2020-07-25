@@ -73,6 +73,11 @@ __meta__ = {
 "_edit_group_": true
 }
 
+[node name="StaticBody2D" type="StaticBody2D" parent="05"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="05/StaticBody2D"]
+shape = SubResource( 2 )
+
 [node name="06" type="Sprite" parent="."]
 position = Vector2( 95.5941, 54.4515 )
 texture = ExtResource( 1 )
