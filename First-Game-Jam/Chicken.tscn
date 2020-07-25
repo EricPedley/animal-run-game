@@ -148,4 +148,5 @@ shape = SubResource( 29 )
 visible = false
 position = Vector2( 0.595276, 2.18267 )
 shape = SubResource( 29 )
+[connection signal="draw" from="." to="." method="_on_Chicken_draw"]
 [connection signal="input_event" from="." to="." method="_on_Chicken_input_event"]

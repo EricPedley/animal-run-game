@@ -29,7 +29,6 @@ func _physics_process(delta):
 			var target = Vector2.ZERO
 			if player.jumpCoords.size()>0:
 				var pv=player.jumpCoords[0]#position and velocity at the point where the player jumped
-				print(pv)
 				target = pv[0]
 				if is_on_floor() and abs(position.x-target.x)<20:
 					player.jumpCoords.pop_front()
@@ -39,6 +38,7 @@ func _physics_process(delta):
 			input_vector.x = Vector2(target.x-position.x,target.y-position.y).x
 	else:
 		input_vector=player.input_vector
+		
 	if ridden:
 		acceleration=100
 		deceleration=100
@@ -63,7 +63,7 @@ func _physics_process(delta):
 			sprite.play("Idle")
 	if jump_target_vector!=Vector2.ZERO:
 		velocity=jump_target_vector
-	if is_on_floor() and Input.is_action_just_pressed("space"):
+	if ridden and is_on_floor() and Input.is_action_just_pressed("space"):
 		velocity.y= -600
 	velocity=move_and_slide(velocity,Vector2.UP)
 	if position.y > 600:
@@ -71,12 +71,16 @@ func _physics_process(delta):
 			position = player.respawn_point
 		else:
 			position=player.position
+	draw_line(position,player.position,Color.red,100)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
 
 func _on_Chicken_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index==BUTTON_RIGHT:
 		ridden=!ridden
 		player.riding=ridden
 		position=player.position
+
