@@ -15,7 +15,6 @@ var following = false
 
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO
-	var jump_target_vector = Vector2.ZERO
 	if player!=null:
 		add_collision_exception_with(player)
 		if not following and box.overlaps_body(player):
@@ -50,8 +49,6 @@ func _physics_process(delta):
 			sprite.play("Run")
 		else:
 			sprite.play("Idle")
-	if jump_target_vector!=Vector2.ZERO:
-		velocity=jump_target_vector
 	velocity=move_and_slide(velocity,Vector2.UP)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
