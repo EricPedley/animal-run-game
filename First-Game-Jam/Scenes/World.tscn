@@ -57,3 +57,5 @@ position = Vector2( 969.492, 374.834 )
 
 [node name="Box" parent="." instance=ExtResource( 8 )]
 position = Vector2( 1072, 344 )
+mass = 10.0
+gravity_scale = 10.0

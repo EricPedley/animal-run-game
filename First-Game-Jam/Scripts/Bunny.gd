@@ -5,6 +5,7 @@ extends KinematicBody2D
 # var a = 2
 # var b = "text"
 const SPEED = 300
+onready var ray = $RayCast2D
 var velocity = Vector2.ZERO
 var respawn_point = Vector2(500, 300)
 var jumpCoords = []
@@ -18,6 +19,10 @@ var riding = false
 var input_vector
 onready var sprite = $Sprite
 # Called when the node enters the scene tree for the first time.
+func _ready():
+	ray.add_exception($TileMap)
+
+
 func _physics_process(_delta):
 		
 	input_vector = Vector2.ZERO
@@ -32,29 +37,36 @@ func _physics_process(_delta):
 		sprite.play("Idle")
 		return
 	velocity.x=velocity.move_toward(input_vector*SPEED,100).x
+	velocity.y+=20
 	if not sprite==null:
-		if is_on_floor():
+		print(ray.is_colliding())
+		if is_on_floor() || ray.is_colliding() == true:
+			
 			if velocity.x<0:
 				sprite.play("Run")
 			elif velocity.x>0:
 				sprite.play("Run")
 			else:
 				sprite.play("Idle")
+				
+			velocity.y=0
+			if Input.is_action_just_pressed("space"):
+				velocity.y=-500
+				jumpCoords.append([position,velocity])
+				
 		else:
 			if velocity.y<0:
 				sprite.play("Jump")
 			else:
 				sprite.play("Fall")
-	velocity.y+=20
-	if is_on_floor() and Input.is_action_just_pressed("space"):
-		velocity.y=-500
-		jumpCoords.append([position,velocity])
+				
+			
 	velocity = move_and_slide(velocity,Vector2.UP)
 	if position.y > 600 :
 		respawn()
 	
-	if hasEquip:
-		equip.position = position
+	
+	
 		
 		
 	
@@ -63,7 +75,8 @@ func _physics_process(_delta):
 func _input(event):
 	if event is InputEventMouseButton && event.is_pressed() && event.button_index:
 		if hasEquip:
-			equip.set_linear_velocity(( event.position - equip.position))
+			equip.equiped = false
+			equip.apply_central_impulse(( event.position - equip.position))
 			hasEquip = false
 
 
@@ -77,8 +90,10 @@ func has_equip():
 	return hasEquip
 
 func equip(item):
+	
 	equip = item
 	hasEquip = true
+	print(equip.position)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
