@@ -8,16 +8,14 @@ const SPEED = 300
 var velocity = Vector2.ZERO
 var respawn_point = Vector2(500, 300)
 var jumpCoords = []
-<<<<<<< HEAD
 
 var equip
 var hasEquip = false
 
 
-=======
+
 var riding = false
 var input_vector
->>>>>>> 10e82e3a1e1857c930a0ff235b52cb7f13dbd7ed
 onready var sprite = $Sprite
 # Called when the node enters the scene tree for the first time.
 func _physics_process(_delta):
