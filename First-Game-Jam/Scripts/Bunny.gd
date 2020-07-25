@@ -7,6 +7,8 @@ extends KinematicBody2D
 const SPEED = 300
 var velocity = Vector2.ZERO
 var respawn_point = Vector2(500, 300)
+var jumpCoords = []
+
 
 onready var sprite = $Sprite
 # Called when the node enters the scene tree for the first time.
@@ -34,6 +36,7 @@ func _physics_process(_delta):
 	velocity.y+=20
 	if is_on_floor() and Input.is_action_pressed("space"):
 		velocity.y=-500
+		jumpCoords.append([position,velocity])
 	velocity = move_and_slide(velocity,Vector2.UP)
 	if(position.y > 600):
 		respawn()

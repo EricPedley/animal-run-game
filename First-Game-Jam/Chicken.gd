@@ -11,7 +11,7 @@ var velocity = Vector2.ZERO
 onready var sprite = $AnimatedSprite
 var following = false
 # Called when the node enters the scene tree for the first time.
-	
+
 
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO
@@ -21,7 +21,15 @@ func _physics_process(delta):
 			following=true
 			velocity.y=-200
 		if following and abs(player.position.x-position.x)>100:
-			input_vector = Vector2(player.position.x-position.x,player.position.y-position.y)
+			var target = Vector2.ZERO
+			if player.jumpCoords.size()>0:
+				var pv=player.jumpCoords.pop_front()#position and velocity at the point where the player jumped
+				target = [0]
+				if position.distance_to(target)<20:
+					velocity=pv[1]
+			else:
+				target=player.position
+			input_vector.x = Vector2(target.x-position.x,target.y-position.y).x
 	if input_vector!=Vector2.ZERO:
 		velocity.x=velocity.move_toward(input_vector*SPEED,10).x
 	else:
