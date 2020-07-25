@@ -1,21 +1,14 @@
-extends KinematicBody2D
+extends "Animal.gd"
 
 
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-const SPEED = 300
-const GRAVITY = 30
-onready var player = get_node("../Bunny")
-onready var box = get_node("Area2D")
-onready var riddenBox = get_node("RiddenHitbox")
-var velocity = Vector2.ZERO
-onready var sprite = $AnimatedSprite
-var following = false
-var ridden = false
-var dismountJump = false
-# Called when the node enters the scene tree for the first time.
 
+onready var sprite = $AnimatedSprite
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	setOffset(140)
 
 func _physics_process(delta):
 	var acceleration = 10
@@ -23,23 +16,9 @@ func _physics_process(delta):
 	var input_vector = Vector2.ZERO
 	var jump_target_vector=Vector2.ZERO
 	if not ridden and player!=null:#code for pseudo-pathfinding
-		add_collision_exception_with(player)
-		if not following and box.overlaps_body(player):#when the player initially finds the animal
-			player.jumpCoords=[]
-			following=true
-			velocity.y=-200
-		if following:
-			var target = Vector2.ZERO
-			if player.jumpCoords.size()>0:
-				var pv=player.jumpCoords[0]#position and velocity at the point where the player jumped
-				target = pv[0]
-				if is_on_floor() and abs(position.x-target.x)<20:
-					player.jumpCoords.pop_front()
-					jump_target_vector=pv[1]
-			elif abs(player.position.x-position.x)>100:
-				target=player.position
-			if target!=Vector2.ZERO:
-				input_vector.x = Vector2(target.x-position.x,target.y-position.y).x
+		var vectors = move_to_player(input_vector,jump_target_vector)
+		input_vector=vectors[0]
+		jump_target_vector=vectors[1]
 	else:
 		input_vector=player.input_vector
 		
@@ -66,9 +45,6 @@ func _physics_process(delta):
 		velocity=jump_target_vector
 	if Input.is_action_just_pressed("space") and ridden and is_on_floor():
 		velocity.y= -600
-	if dismountJump:
-		dismountJump=false
-		velocity.y+=300
 	velocity=move_and_slide(velocity,Vector2.UP)
 	if position.y > 600:
 		if ridden:
@@ -85,14 +61,10 @@ func _on_Area2D_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index==BUTTON_RIGHT:
 		print(ridden)
 		if ridden:
-			get_node("../Water").set_collision_mask_bit(1,false)
 			riddenBox.disabled=true
 			player.position.y-=20
-			player.dismountJump=true
-			dismountJump=true
 			player.riding="none"
 		else:
-			get_node("../Water").set_collision_mask_bit(1,true)
 			player.riding="Duck"
 			riddenBox.disabled=false
 			position=player.position
