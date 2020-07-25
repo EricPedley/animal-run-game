@@ -9,6 +9,9 @@ var velocity = Vector2.ZERO
 var respawn_point = Vector2(500, 300)
 var jumpCoords = []
 
+var equip
+var hasEquip = false
+
 
 onready var sprite = $Sprite
 # Called when the node enters the scene tree for the first time.
@@ -38,20 +41,35 @@ func _physics_process(_delta):
 		velocity.y=-500
 		jumpCoords.append([position,velocity])
 	velocity = move_and_slide(velocity,Vector2.UP)
-	if(position.y > 600):
+	if position.y > 600 :
 		respawn()
 	
+	if hasEquip:
+		equip.position = position
+		
 		
 	
 	
-	
+
+func _input(event):
+	if event is InputEventMouseButton && event.is_pressed() && event.button_index:
+		if hasEquip:
+			equip.set_linear_velocity(( event.position - equip.position))
+			hasEquip = false
+
 
 func respawn():
 	position = respawn_point
 	
 func set_respawn(respawn):
 	respawn_point = respawn
+	
+func has_equip():
+	return hasEquip
 
+func equip(item):
+	equip = item
+	hasEquip = true
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
