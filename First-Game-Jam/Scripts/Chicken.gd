@@ -23,6 +23,8 @@ func _physics_process(delta):
 	var input_vector = Vector2.ZERO
 	var jump_target_vector=Vector2.ZERO
 	if not ridden and player!=null:#code for pseudo-pathfinding
+		if position.distance_to(player.position)>700:
+			position = player.position
 		add_collision_exception_with(player)
 		if not following and box.overlaps_body(player):
 			player.jumpCoords=[]

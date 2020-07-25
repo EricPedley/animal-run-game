@@ -85,12 +85,14 @@ func _on_Area2D_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index==BUTTON_RIGHT:
 		print(ridden)
 		if ridden:
+			get_node("../Water").set_collision_mask_bit(1,false)
 			riddenBox.disabled=true
 			player.position.y-=20
 			player.dismountJump=true
 			dismountJump=true
 			player.riding="none"
 		else:
+			get_node("../Water").set_collision_mask_bit(1,true)
 			player.riding="Duck"
 			riddenBox.disabled=false
 			position=player.position
