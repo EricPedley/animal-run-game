@@ -68,6 +68,7 @@ animations = [ {
 
 [node name="Duck" type="KinematicBody2D"]
 input_pickable = true
+collision_layer = 3
 script = ExtResource( 2 )
 
 [node name="Area2D" type="Area2D" parent="."]
