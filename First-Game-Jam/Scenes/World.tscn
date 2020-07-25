@@ -78,6 +78,7 @@ position = Vector2( 2697.37, 406.802 )
 
 [node name="Mushroom" parent="." instance=ExtResource( 13 )]
 position = Vector2( 2193.41, 425.611 )
+collision_layer = 8
 
 [node name="Bunny" parent="." instance=ExtResource( 3 )]
 position = Vector2( 483.965, 328.973 )

@@ -9,6 +9,7 @@ onready var sprite = $AnimatedSprite
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	setOffset(140)
+	setSpeed(250)
 
 func _physics_process(delta):
 	var acceleration = 10

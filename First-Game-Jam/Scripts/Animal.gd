@@ -4,7 +4,7 @@ extends KinematicBody2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-const SPEED = 300
+var SPEED = 300
 const GRAVITY = 30
 onready var player = get_node("../Bunny")
 onready var box = get_node("Area2D")
@@ -37,7 +37,22 @@ func move_to_player(input_vector,jump_target_vector):
 	return [input_vector,jump_target_vector]
 func setOffset(newOffset):
 	offset=newOffset
-
+func setSpeed(newSpeed):
+	SPEED=newSpeed
+func mount(name):
+	player.riding=name
+	riddenBox.disabled=false
+	position=player.position
+	ridden=true
+func unMount():
+	riddenBox.disabled=true
+	player.position.y-=20
+	player.riding="none"
+	ridden=false
+func _input(event):
+	if event is InputEventMouseButton and event.is_pressed() and event.button_index==BUTTON_RIGHT:
+		if ridden:
+			unMount()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

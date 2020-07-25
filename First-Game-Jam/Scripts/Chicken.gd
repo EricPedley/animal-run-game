@@ -54,17 +54,11 @@ func _physics_process(delta):
 		player.jumpCoords=[]
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
-#	pass
+#	
+	
+		
 
 func _on_Area2D_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index==BUTTON_RIGHT:
-		print(ridden)
-		if ridden:
-			riddenBox.disabled=true
-			player.position.y-=20
-			player.riding="none"
-		else:
-			player.riding="Chicken"
-			riddenBox.disabled=false
-			position=player.position
-		ridden=!ridden
+		if not ridden:
+			mount("Chicken")

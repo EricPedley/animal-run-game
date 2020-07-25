@@ -9,6 +9,7 @@ var dismountJump = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	setOffset(120)
+	setSpeed(200)
 
 func _physics_process(delta):
 	var acceleration = 10
