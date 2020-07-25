@@ -11,6 +11,7 @@ var velocity = Vector2.ZERO
 onready var sprite = $AnimatedSprite
 var following = false
 var ridden = false
+var dismountJump = false
 # Called when the node enters the scene tree for the first time.
 
 
@@ -47,7 +48,7 @@ func _physics_process(delta):
 	else:
 		velocity.x=velocity.move_toward(Vector2.ZERO,deceleration).x
 	velocity.y+=20
-	if Input.is_action_pressed("space") and velocity.y>0:
+	if ridden and Input.is_action_pressed("space") and velocity.y>0:
 		velocity.y-=10
 		velocity.y = min(velocity.y,90)
 	if is_on_floor() and is_on_wall():
@@ -65,6 +66,9 @@ func _physics_process(delta):
 		velocity=jump_target_vector
 	if Input.is_action_just_pressed("space") and ridden and is_on_floor():
 		velocity.y= -600
+	if dismountJump:
+		dismountJump=false
+		velocity.y+=300
 	velocity=move_and_slide(velocity,Vector2.UP)
 	if position.y > 600:
 		if ridden:
@@ -79,7 +83,13 @@ func _physics_process(delta):
 
 func _on_Chicken_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index==BUTTON_RIGHT:
+		if ridden:
+			player.position.y-=20
+			player.dismountJump=true
+			dismountJump=true
+		else:
+			position=player.position
 		ridden=!ridden
 		player.riding=ridden
-		position=player.position
+		
 

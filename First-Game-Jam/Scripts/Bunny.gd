@@ -14,7 +14,7 @@ var equip
 var hasEquip = false
 
 
-
+var dismountJump = false
 var riding = false
 var input_vector
 onready var sprite = $Sprite
@@ -39,7 +39,6 @@ func _physics_process(_delta):
 	velocity.x=velocity.move_toward(input_vector*SPEED,100).x
 	velocity.y+=20
 	if not sprite==null:
-		print(ray.is_colliding())
 		if is_on_floor() || ray.is_colliding() == true:
 			
 			if velocity.x<0:
@@ -60,7 +59,9 @@ func _physics_process(_delta):
 			else:
 				sprite.play("Fall")
 				
-			
+	if dismountJump:
+		velocity.y-=600
+		dismountJump=false
 	velocity = move_and_slide(velocity,Vector2.UP)
 	if position.y > 600 :
 		respawn()
