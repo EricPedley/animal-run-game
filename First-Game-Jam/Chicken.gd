@@ -6,14 +6,21 @@ extends KinematicBody2D
 # var b = "text"
 const SPEED = 350
 onready var player = get_node("../Bunny")
+onready var box = get_node("Area2D")
 var velocity = Vector2.ZERO
 onready var sprite = $AnimatedSprite
+var following = false
 # Called when the node enters the scene tree for the first time.
+	
+
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO
 	if player!=null:
 		add_collision_exception_with(player)
-		if abs(player.position.x-position.x)>100:
+		if not following and box.overlaps_body(player):
+			following=true
+			velocity.y=-200
+		if following and abs(player.position.x-position.x)>100:
 			input_vector = Vector2(player.position.x-position.x,player.position.y-position.y)
 	if input_vector!=Vector2.ZERO:
 		velocity.x=velocity.move_toward(input_vector*SPEED,10).x
@@ -32,8 +39,6 @@ func _physics_process(delta):
 		else:
 			sprite.play("Idle")
 	velocity=move_and_slide(velocity,Vector2.UP)
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
