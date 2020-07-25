@@ -37,7 +37,11 @@ position = Vector2( 1052.68, 350.845 )
 [node name="Camera2D" type="Camera2D" parent="Bunny"]
 current = true
 zoom = Vector2( 0.5, 0.5 )
+limit_left = 0
+limit_top = 0
+limit_bottom = 613
 drag_margin_h_enabled = true
+editor_draw_limits = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
