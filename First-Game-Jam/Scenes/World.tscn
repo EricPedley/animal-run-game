@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Assets/FreeCuteTileset/BG1.png" type="Texture" id=1]
+[ext_resource path="res://Assets/FreeCuteTileset/sky.png" type="Texture" id=1]
 [ext_resource path="res://Assets/FreeCuteTileset/BG3.png" type="Texture" id=2]
 [ext_resource path="res://Bunny.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/basic.tres" type="TileSet" id=4]
@@ -9,17 +9,18 @@
 [node name="World" type="Node2D"]
 
 [node name="Sky" type="Sprite" parent="."]
-position = Vector2( 512.683, 307.515 )
-scale = Vector2( 3.20396, 3.20396 )
+scale = Vector2( 2.08064, 2.08064 )
 texture = ExtResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 1555.65, 180 )
 
 [node name="Hills" type="Sprite" parent="."]
-position = Vector2( 514.24, 315.756 )
 scale = Vector2( 3.20181, 3.20181 )
 texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 1013.2, 192 )
 __meta__ = {
 "_edit_lock_": true
 }
