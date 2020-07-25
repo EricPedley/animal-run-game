@@ -33,7 +33,7 @@ func _physics_process(_delta):
 				sprite.play("Fall")
 	velocity.y+=20
 	if is_on_floor() and Input.is_action_pressed("space"):
-		velocity.y=-700
+		velocity.y=-500
 	velocity = move_and_slide(velocity,Vector2.UP)
 	if(position.y > 600):
 		respawn()
