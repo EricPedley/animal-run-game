@@ -1,8 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Assets/FreeCuteTileset/Tileset.png" type="Texture" id=1]
+[ext_resource path="res://Assets/free tile set Finished.png" type="Texture" id=2]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 8.05151, 8.03375 )
 
 [node name="Node" type="Node"]
@@ -19,7 +20,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="01"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="01/StaticBody2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="02" type="Sprite" parent="."]
 position = Vector2( 59.3711, -22.4035 )
@@ -33,7 +34,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="02"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="02/StaticBody2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="03" type="Sprite" parent="."]
 position = Vector2( 38.897, 13.5045 )
@@ -47,7 +48,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="03"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="03/StaticBody2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="04" type="Sprite" parent="."]
 position = Vector2( 99.0581, 19.4885 )
@@ -61,7 +62,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="04"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="04/StaticBody2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="05" type="Sprite" parent="."]
 position = Vector2( 42.3621, 75.2405 )
@@ -75,7 +76,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="05"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="05/StaticBody2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="06" type="Sprite" parent="."]
 position = Vector2( 95.5941, 54.4515 )
@@ -89,7 +90,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="06"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="06/StaticBody2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="07" type="Sprite" parent="."]
 position = Vector2( 7.71407, 30.5135 )
@@ -103,7 +104,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="07"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="07/StaticBody2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="08" type="Sprite" parent="."]
 position = Vector2( 43.6221, 44.3725 )
@@ -117,7 +118,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="08"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="08/StaticBody2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="09" type="Sprite" parent="."]
 position = Vector2( 77.8286, 82.7479 )
@@ -131,7 +132,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="09"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="09/StaticBody2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="10" type="Sprite" parent="."]
 position = Vector2( 51.3688, 98.2076 )
@@ -145,7 +146,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="10"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="10/StaticBody2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="11" type="Sprite" parent="."]
 position = Vector2( 118.856, 103.559 )
@@ -159,7 +160,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="11"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="11/StaticBody2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="12" type="Sprite" parent="."]
 position = Vector2( 118.856, 103.559 )
@@ -173,7 +174,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="12"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="12/StaticBody2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="13" type="Sprite" parent="."]
 position = Vector2( 123.91, 69.072 )
@@ -187,7 +188,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="13"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="13/StaticBody2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="14" type="Sprite" parent="."]
 position = Vector2( 165.83, 72.9369 )
@@ -201,7 +202,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="14"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="14/StaticBody2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="15" type="Sprite" parent="."]
 position = Vector2( 144.127, 45.8825 )
@@ -215,7 +216,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="15"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="15/StaticBody2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="16" type="Sprite" parent="."]
 position = Vector2( 178.911, 42.6122 )
@@ -229,7 +230,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="16"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="16/StaticBody2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="17" type="Sprite" parent="."]
 position = Vector2( 209.236, 36.6661 )
@@ -243,7 +244,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="17"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="17/StaticBody2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="18" type="Sprite" parent="."]
 position = Vector2( 202.993, 72.3423 )
@@ -257,7 +258,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="18"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="18/StaticBody2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="19" type="Sprite" parent="."]
 position = Vector2( 227.966, 60.7476 )
@@ -271,7 +272,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="19"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="19/StaticBody2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="20" type="Sprite" parent="."]
 position = Vector2( 235.696, 38.1526 )
@@ -285,7 +286,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="20"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="20/StaticBody2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="21" type="Sprite" parent="."]
 position = Vector2( 221.128, 17.0442 )
@@ -299,7 +300,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="21"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="21/StaticBody2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="22" type="Sprite" parent="."]
 position = Vector2( 180.992, 11.9901 )
@@ -313,7 +314,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="22"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="22/StaticBody2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="23" type="Sprite" parent="."]
 position = Vector2( 141.451, 0.692612 )
@@ -327,7 +328,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="23"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="23/StaticBody2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="24" type="Sprite" parent="."]
 position = Vector2( 108.451, -8.52374 )
@@ -341,7 +342,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="24"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="24/StaticBody2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="25" type="Sprite" parent="."]
 position = Vector2( 135.505, -22.4969 )
@@ -355,7 +356,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="25"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="25/StaticBody2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="26" type="Sprite" parent="."]
 position = Vector2( 169.1, -25.4699 )
@@ -369,7 +370,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="26"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="26/StaticBody2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="27" type="Sprite" parent="."]
 position = Vector2( 225.29, -23.0915 )
@@ -383,7 +384,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="27"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="27/StaticBody2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="28" type="Sprite" parent="."]
 position = Vector2( 259.183, 7.23325 )
@@ -397,7 +398,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="28"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="28/StaticBody2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="29" type="Sprite" parent="."]
 position = Vector2( 211.317, -1.6858 )
@@ -411,7 +412,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="29"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="29/StaticBody2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="30" type="Sprite" parent="."]
 position = Vector2( 270.48, 46.4771 )
@@ -425,7 +426,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="30"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="30/StaticBody2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="31" type="Sprite" parent="."]
 position = Vector2( 246.696, 77.0992 )
@@ -439,7 +440,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="31"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="31/StaticBody2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="32" type="Sprite" parent="."]
 position = Vector2( 220.831, 95.2346 )
@@ -453,7 +454,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="32"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="32/StaticBody2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="33" type="Sprite" parent="."]
 position = Vector2( 183.073, 103.856 )
@@ -467,7 +468,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="33"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="33/StaticBody2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="34" type="Sprite" parent="."]
 position = Vector2( 143.235, 108.613 )
@@ -481,7 +482,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="34"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="34/StaticBody2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="35" type="Sprite" parent="."]
 position = Vector2( 168.803, 126.451 )
@@ -495,7 +496,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="35"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="35/StaticBody2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="36" type="Sprite" parent="."]
 position = Vector2( 211.02, 123.776 )
@@ -509,7 +510,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="36"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="36/StaticBody2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="37" type="Sprite" parent="."]
 position = Vector2( 246.696, 116.938 )
@@ -523,7 +524,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="37"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="37/StaticBody2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="38" type="Sprite" parent="."]
 position = Vector2( 269.291, 101.775 )
@@ -537,7 +538,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="38"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="38/StaticBody2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="39" type="Sprite" parent="."]
 position = Vector2( 291.886, 79.1803 )
@@ -551,7 +552,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="39"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="39/StaticBody2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="40" type="Sprite" parent="."]
 position = Vector2( 302.886, 111.289 )
@@ -565,7 +566,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="40"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="40/StaticBody2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="41" type="Sprite" parent="."]
 position = Vector2( 278.805, 126.154 )
@@ -579,7 +580,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="41"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="41/StaticBody2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="42" type="Sprite" parent="."]
 position = Vector2( 238.074, 142.506 )
@@ -593,7 +594,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="42"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="42/StaticBody2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="43" type="Sprite" parent="."]
 position = Vector2( 257.399, 140.722 )
@@ -607,7 +608,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="43"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="43/StaticBody2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="44" type="Sprite" parent="."]
 position = Vector2( 296.048, 139.83 )
@@ -621,4 +622,88 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="44"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="44/StaticBody2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
+
+[node name="45" type="Sprite" parent="."]
+position = Vector2( 406.614, 106.047 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 416, 192, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="45"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="45/StaticBody2D"]
+shape = SubResource( 2 )
+
+[node name="46" type="Sprite" parent="."]
+position = Vector2( 355.181, 132.804 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 416, 208, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="46"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="46/StaticBody2D"]
+shape = SubResource( 2 )
+
+[node name="47" type="Sprite" parent="."]
+position = Vector2( 380.154, 151.237 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 432, 192, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="47"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="47/StaticBody2D"]
+shape = SubResource( 2 )
+
+[node name="48" type="Sprite" parent="."]
+position = Vector2( 377.181, 117.344 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 448, 192, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="48"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="48/StaticBody2D"]
+shape = SubResource( 2 )
+
+[node name="49" type="Sprite" parent="."]
+position = Vector2( 348.938, 84.9384 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 448, 208, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="49"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="49/StaticBody2D"]
+shape = SubResource( 2 )
+
+[node name="50" type="Sprite" parent="."]
+position = Vector2( 372.127, 84.9384 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 464, 192, 16, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="50"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="50/StaticBody2D"]
+shape = SubResource( 2 )

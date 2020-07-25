@@ -16,7 +16,7 @@ var hasEquip = false
 
 
 var dismountJump = false
-var riding = false
+var riding = "none"
 var input_vector
 onready var sprite = $Sprite
 # Called when the node enters the scene tree for the first time.
@@ -32,9 +32,9 @@ func _physics_process(_delta):
 		sprite.flip_h=false
 	elif input_vector.x>0:
 		sprite.flip_h=true
-	if riding:
-		var chicken = get_node("../Chicken")
-		position = chicken.position+Vector2(0,-20)
+	if riding!="none":
+		var animal = get_node("../"+riding)
+		position = animal.position+Vector2(0,-20)
 		sprite.play("Idle")
 		return
 	velocity.x=velocity.move_toward(input_vector*SPEED,100).x

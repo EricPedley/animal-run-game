@@ -24,7 +24,7 @@ func _physics_process(delta):
 	var jump_target_vector=Vector2.ZERO
 	if not ridden and player!=null:#code for pseudo-pathfinding
 		add_collision_exception_with(player)
-		if not following and box.overlaps_body(player):
+		if not following and box.overlaps_body(player):#when the player initially finds the animal
 			player.jumpCoords=[]
 			following=true
 			velocity.y=-200
@@ -51,9 +51,6 @@ func _physics_process(delta):
 	elif is_on_floor():
 		velocity.x=velocity.move_toward(Vector2.ZERO,deceleration).x
 	velocity.y+=GRAVITY
-	if ridden and Input.is_action_pressed("space") and velocity.y>0:
-		velocity.y-=GRAVITY/2
-		velocity.y = min(velocity.y,90)
 	if is_on_floor() and is_on_wall():
 		velocity.y=-300
 	if not sprite==null:
@@ -94,7 +91,7 @@ func _on_Area2D_input_event(viewport, event, shape_idx):
 			dismountJump=true
 			player.riding="none"
 		else:
-			player.riding="Chicken"
+			player.riding="Duck"
 			riddenBox.disabled=false
 			position=player.position
 		ridden=!ridden
