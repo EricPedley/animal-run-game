@@ -39,7 +39,6 @@ func _physics_process(_delta):
 	velocity.x=velocity.move_toward(input_vector*SPEED,100).x
 	velocity.y+=20
 	if not sprite==null:
-		print(ray.is_colliding())
 		if is_on_floor() || ray.is_colliding() == true:
 			
 			if velocity.x<0:
@@ -66,7 +65,7 @@ func _physics_process(_delta):
 		respawn()
 	
 	
-	
+
 		
 		
 	
@@ -75,9 +74,15 @@ func _physics_process(_delta):
 func _input(event):
 	if event is InputEventMouseButton && event.is_pressed() && event.button_index:
 		if hasEquip:
+			equip.fire = true;
+			equip.fire_direction = event.position
+			equip.collision.set_disabled(false)
+			ray.remove_exception(equip)
 			equip.equiped = false
-			equip.apply_central_impulse(( event.position - equip.position))
 			hasEquip = false
+			equip.gravity_scale = 1
+			
+			
 
 
 func respawn():
@@ -90,10 +95,11 @@ func has_equip():
 	return hasEquip
 
 func equip(item):
-	
+	ray.add_exception(item)
 	equip = item
+	equip.gravity_scale = 0
 	hasEquip = true
-	print(equip.position)
+	equip.collision.set_disabled(true)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
