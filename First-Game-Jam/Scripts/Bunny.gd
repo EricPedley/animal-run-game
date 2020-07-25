@@ -6,6 +6,8 @@ extends KinematicBody2D
 # var b = "text"
 const SPEED = 300
 var velocity = Vector2.ZERO
+var respawn_point = Vector2(500, 300)
+
 onready var sprite = $Sprite
 # Called when the node enters the scene tree for the first time.
 func _physics_process(_delta):
@@ -33,7 +35,13 @@ func _physics_process(_delta):
 	if is_on_floor() and Input.is_action_pressed("space"):
 		velocity.y=-700
 	velocity = move_and_slide(velocity,Vector2.UP)
+	if(position.y > 600):
+		respawn()
+	
+	
 
+func respawn():
+	position = respawn_point
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
