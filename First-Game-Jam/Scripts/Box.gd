@@ -6,8 +6,12 @@ extends RigidBody2D
 # var b = "text"
 
 onready var player = get_node("../Bunny")
+onready var collision = $CollisionShape2D
+onready var camera = get_node("../Bunny/Camera2D")
 
 var equiped = false
+var fire = false
+var fire_direction
 
 
 
@@ -19,6 +23,13 @@ func _integrate_forces(state):
 	
 	if equiped:
 		state.transform = Transform2D(0, player.position)
+	elif fire:
+		print(position)
+		print(OS.get_window_size())
+		print(fire_direction)
+		state.transform = Transform2D(0, (position) + ((fire_direction - OS.get_window_size()/2)).normalized()*10)
+		linear_velocity = (fire_direction - OS.get_window_size()/2)/2
+		fire = false
 
    
 
