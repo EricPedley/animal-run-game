@@ -58,3 +58,9 @@ func _physics_process(delta):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _input(event):
+   # Mouse in viewport coordinates
+   if event is InputEventMouseButton:
+	   print("Mouse Click/Unclick at: ", event.position)
