@@ -135,6 +135,7 @@ height = 32.1035
 
 [node name="Chicken" type="KinematicBody2D"]
 input_pickable = true
+collision_layer = 4
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
