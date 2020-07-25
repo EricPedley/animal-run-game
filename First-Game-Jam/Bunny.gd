@@ -11,23 +11,25 @@ onready var sprite = $Sprite
 func _physics_process(_delta):
 	var input_vector = Vector2.ZERO
 	input_vector.x=Input.get_action_strength("ui_right")-Input.get_action_strength("ui_left")
+	if velocity.x<0:
+		sprite.flip_h=false;
+	elif velocity.x>0:
+		sprite.flip_h=true
 	velocity.x=velocity.move_toward(input_vector*SPEED,100).x
 	if not sprite==null:
-		if velocity.x<0:
-			sprite.play("Run")
-			sprite.flip_h=false
-		elif velocity.x>0:
-			sprite.play("Run")
-			sprite.flip_h=true
+		if is_on_floor():
+			if velocity.x<0:
+				sprite.play("Run")
+			elif velocity.x>0:
+				sprite.play("Run")
+			else:
+				sprite.play("Idle")
 		else:
-			sprite.play("Idle")
-		if not is_on_floor():
 			if velocity.y<0:
 				sprite.play("Jump")
 			else:
 				sprite.play("Fall")
-			velocity.y+=20
-	sprite.play("Run")
+	velocity.y+=20
 	if is_on_floor() and Input.is_action_pressed("space"):
 		velocity.y=-700
 	velocity = move_and_slide(velocity,Vector2.UP)
