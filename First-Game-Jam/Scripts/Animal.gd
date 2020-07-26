@@ -13,8 +13,10 @@ var velocity = Vector2.ZERO
 var following = false
 var ridden = false
 var offset = 100
+var about_to_unmount=false
 # Called when the node enters the scene tree for the first time.
 func move_to_player(input_vector,jump_target_vector):
+	about_to_unmount=false
 	if following and position.distance_to(player.position)>700:
 		position = player.position
 	add_collision_exception_with(player)
@@ -45,13 +47,14 @@ func mount(name):
 	position=player.position
 	ridden=true
 func unMount():
+	player.riding="none"
 	riddenBox.disabled=true
 	player.position.y-=20
-	player.riding="none"
 	ridden=false
 func _input(event):
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index==BUTTON_RIGHT:
 		if ridden:
+			about_to_unmount=true
 			unMount()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

@@ -47,6 +47,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("space") and ridden and is_on_floor():
 		velocity.y= -600
 	if dismountJump:
+		print("dismount jumping")
 		dismountJump=false
 		velocity.y+=300
 	velocity=move_and_slide(velocity,Vector2.UP)
@@ -63,15 +64,13 @@ func _physics_process(delta):
 
 func _on_Area2D_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index==BUTTON_RIGHT:
-		print(ridden)
-		if ridden:
-			riddenBox.disabled=true
-			player.position.y-=20
-			player.dismountJump=true
-			dismountJump=true
-			player.riding="none"
-		else:
-			player.riding="Mushroom"
-			riddenBox.disabled=false
-			position=player.position
-		ridden=!ridden
+		if following and not ridden and not about_to_unmount:
+			mount("Mushroom")
+func unMount():
+	riddenBox.disabled=true
+	player.position.y-=20
+	player.riding="none"
+	ridden=false
+	dismountJump=true
+	player.dismountJump=true
+	
