@@ -127,6 +127,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="RichTextLabel7" type="RichTextLabel" parent="."]
+margin_left = 2968.0
+margin_top = 376.0
+margin_right = 3208.0
+margin_bottom = 440.0
+custom_fonts/normal_font = ExtResource( 11 )
+text = "The duck can swim in water
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Checkpoint2" parent="." instance=ExtResource( 7 )]
 position = Vector2( 1056, 368 )
 
