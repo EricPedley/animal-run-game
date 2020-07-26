@@ -40,7 +40,9 @@ func _physics_process(_delta):
 	velocity.x=velocity.move_toward(input_vector*SPEED,100).x
 	velocity.y+=GRAVITY
 	if not sprite==null:
-		if is_on_floor() || ray.is_colliding() == true:
+		if is_on_floor() || (ray.is_colliding() == true && "Box" in ray.get_collider().name):
+			if(ray.is_colliding()):
+				print(ray.get_collider().name)
 			
 			if velocity.x<0:
 				sprite.play("Run")
@@ -49,7 +51,7 @@ func _physics_process(_delta):
 			else:
 				sprite.play("Idle")
 				
-			velocity.y=0
+			velocity.y=1
 			if Input.is_action_just_pressed("space"):
 				velocity.y=-500
 				jumpCoords.append([position,velocity])
