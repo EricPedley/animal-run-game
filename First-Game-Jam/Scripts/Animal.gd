@@ -19,8 +19,11 @@ onready var sprite = $AnimatedSprite
 # Called when the node enters the scene tree for the first time.
 func move_to_player(input_vector,jump_target_vector):
 	about_to_unmount=false
-	if following and position.distance_to(player.position)>700:
-		position = player.position
+	if position.distance_to(player.position)>700:
+		if following:
+			position = player.position
+		elif freed:
+			position = player.respawn_point
 	add_collision_exception_with(player)
 	if not freed and box.overlaps_body(player):
 		player.jumpCoords=[]

@@ -89,7 +89,6 @@ tracks/0/keys = {
 [node name="MovingPlatform" type="Node2D"]
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]
-position = Vector2( 0, 150 )
 motion/sync_to_physics = true
 __meta__ = {
 "_edit_group_": true
