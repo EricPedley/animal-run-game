@@ -16,4 +16,13 @@ func _process(delta):
 	for collision in hitbox.get_overlapping_bodies ( ):
 		if(collision.name == "Bunny"):
 			collision.set_respawn(position)
-			play("Flag")
+			connect("animation_finished", self, "playFlag")
+			play("Flag UP")
+			
+func playFlag():
+	play("Flag")
+
+
+
+
+
