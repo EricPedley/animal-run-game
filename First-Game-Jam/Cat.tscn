@@ -1,0 +1,77 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Assets/New_Piskel_3.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Chicken.gd" type="Script" id=2]
+[ext_resource path="res://Assets/cage.png" type="Texture" id=4]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 34, 30, 34, 30 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 30, 34, 30 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 34, 30 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 1 )
+region = Rect2( 34, 0, 34, 30 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 1 ) ],
+"loop": true,
+"name": "Jump",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 2 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 7.0
+}, {
+"frames": [ SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "Run",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=6]
+radius = 12.8589
+height = 3.51231
+
+[sub_resource type="CapsuleShape2D" id=7]
+radius = 13.8005
+height = 32.1035
+
+[node name="Cat" type="KinematicBody2D"]
+input_pickable = true
+collision_layer = 4
+script = ExtResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 5 )
+animation = "Jump"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 0.595276, 2.18267 )
+shape = SubResource( 6 )
+
+[node name="RiddenHitbox" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 0, -12.193 )
+shape = SubResource( 7 )
+disabled = true
+
+[node name="Cage" type="Sprite" parent="."]
+position = Vector2( 0.105118, 0.735786 )
+scale = Vector2( 1.19052, 1.19052 )
+texture = ExtResource( 4 )
+[connection signal="draw" from="." to="." method="_on_Chicken_draw"]
+[connection signal="input_event" from="." to="." method="_on_Chicken_input_event"]
+[connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]

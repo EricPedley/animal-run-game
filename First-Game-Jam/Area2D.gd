@@ -1,4 +1,4 @@
-extends Sprite
+extends Area2D
 
 
 # Declare member variables here. Examples:
@@ -11,15 +11,23 @@ func _ready():
 	pass # Replace with function body.
 
 
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
 
 
-func _input(event):
+
+	
+
+
+func _input_event(viewport, event, shape_idx):
+	print("hi")
 	if event is InputEventMouseButton:
 		if event.is_pressed() && event.button_index == BUTTON_LEFT:
-			if(event.position.x > 336 && event.position.y > 333 && event.position.x < 659 && event.position.y < 373):
-				get_tree().change_scene("res://Scenes/world.tscn")
+			get_tree().change_scene("res://Scenes/World.tscn")
+	pass # Replace with function body.
+
+
+func _on_Start_mouse_entered():
+	print("hi")
+	pass # Replace with function body.

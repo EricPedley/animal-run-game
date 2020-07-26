@@ -1,4 +1,4 @@
-extends Sprite
+extends KinematicBody2D
 
 
 # Declare member variables here. Examples:
@@ -11,15 +11,13 @@ func _ready():
 	pass # Replace with function body.
 
 
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
+func _input(event):
+	print(event.position)
+	print(position)
+
 #	pass
 
 
-func _input(event):
-	if event is InputEventMouseButton:
-		if event.is_pressed() && event.button_index == BUTTON_LEFT:
-			if(event.position.x > 336 && event.position.y > 333 && event.position.x < 659 && event.position.y < 373):
-				get_tree().change_scene("res://Scenes/world.tscn")
+

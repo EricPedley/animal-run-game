@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/vector-game-ui-big-kit-template-wooden-menu-graphical-user-interface-gui-buttons-to-build-d-games-game-ui-big-kit-template-138898745.jpg" type="Texture" id=1]
 [ext_resource path="res://Assets/FreeCuteTileset/BG1.png" type="Texture" id=2]
 [ext_resource path="res://Assets/FreeCuteTileset/BG3.png" type="Texture" id=3]
 [ext_resource path="res://Scripts/Start.gd" type="Script" id=4]
 [ext_resource path="res://Assets/Giant Pixel Font.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Scripts/Credits.gd" type="Script" id=6]
 
 [node name="TitleScreen" type="Control"]
 anchor_right = 1.0
@@ -14,8 +15,8 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 514, 299 )
-scale = Vector2( 3.2, 3.125 )
+position = Vector2( 512, 301.25 )
+scale = Vector2( 3.2, 3.13802 )
 texture = ExtResource( 2 )
 
 [node name="Sprite2" type="Sprite" parent="."]
@@ -24,60 +25,22 @@ texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 1, 54, 1060, 117 )
 
-[node name="Start" type="Button" parent="."]
-margin_left = 367.0
-margin_top = 309.0
-margin_right = 658.0
-margin_bottom = 352.0
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Sprite3" type="Sprite" parent="Start"]
-position = Vector2( 146.828, 22.0264 )
+[node name="Credits" type="Sprite" parent="."]
+position = Vector2( 512.673, 454 )
 scale = Vector2( 1, 1.07557 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 50.2114, 449.484, 292.754, 39.6559 )
+script = ExtResource( 6 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="Start"]
-margin_left = 86.6726
-margin_right = 270.673
-margin_bottom = 48.0
-custom_fonts/normal_font = ExtResource( 5 )
-tab_size = 1
-text = "Start"
-scroll_active = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Credits" type="Button" parent="."]
-anchor_right = 0.031
-anchor_bottom = 0.057
-margin_left = 366.0
-margin_top = 436.0
-margin_right = 626.256
-margin_bottom = 441.8
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Sprite3" type="Sprite" parent="Credits"]
-position = Vector2( 147.2, 19.7709 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 50.2114, 449.484, 292.754, 39.6559 )
-
 [node name="RichTextLabel" type="RichTextLabel" parent="Credits"]
-margin_left = 63.793
-margin_top = -11.4799
-margin_right = 247.793
-margin_bottom = 36.5201
+margin_left = -87.8796
+margin_top = -26.9624
+margin_right = 96.1204
+margin_bottom = 21.0376
 custom_fonts/normal_font = ExtResource( 5 )
 tab_size = 1
 text = "Credits
@@ -86,4 +49,27 @@ scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="Start" to="Start" method="_on_Credits_pressed"]
+
+[node name="Start" type="Sprite" parent="."]
+position = Vector2( 512.673, 352 )
+scale = Vector2( 1, 1.07557 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 50.2114, 449.484, 292.754, 39.6559 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Start"]
+margin_left = -59.0
+margin_top = -28.822
+margin_right = 125.0
+margin_bottom = 19.178
+custom_fonts/normal_font = ExtResource( 5 )
+tab_size = 1
+text = "Start"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
