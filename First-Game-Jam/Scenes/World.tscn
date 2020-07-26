@@ -126,13 +126,13 @@ position = Vector2( 3685.11, 365.027 )
 position = Vector2( 4955.14, 301.72 )
 
 [node name="Chicken" parent="." instance=ExtResource( 6 )]
-position = Vector2( 3612, 364 )
+position = Vector2( 3621.13, 365.587 )
 
 [node name="Box" parent="." instance=ExtResource( 8 )]
 position = Vector2( 1128, 384 )
 
 [node name="Duck" parent="." instance=ExtResource( 9 )]
-position = Vector2( 3573.62, 341.719 )
+position = Vector2( 3566.08, 373.467 )
 
 [node name="Mushroom" parent="." instance=ExtResource( 13 )]
 position = Vector2( 3728.31, 361.171 )
@@ -142,7 +142,7 @@ collision_layer = 8
 position = Vector2( 4187.86, 393.353 )
 
 [node name="Bunny" parent="." instance=ExtResource( 3 )]
-position = Vector2( 3653.18, 352.604 )
+position = Vector2( 3671.83, 347.445 )
 
 [node name="Camera2D" type="Camera2D" parent="Bunny"]
 visible = false
