@@ -41,6 +41,7 @@ func move_to_player(input_vector,jump_target_vector):
 		if target!=Vector2.ZERO:
 			input_vector.x = Vector2(target.x-position.x,target.y-position.y).x
 	return [input_vector,jump_target_vector]
+	
 func handle_movement(input_vector,jump_target_vector):
 	var acceleration = 10
 	var deceleration = 50
@@ -49,7 +50,7 @@ func handle_movement(input_vector,jump_target_vector):
 		deceleration=100
 	if input_vector!=Vector2.ZERO:
 		velocity.x=velocity.move_toward(input_vector*SPEED,acceleration).x
-	elif is_on_floor():
+	elif velocity.y>=0:
 		velocity.x=velocity.move_toward(Vector2.ZERO,deceleration).x
 	velocity.y+=GRAVITY
 	
@@ -71,36 +72,40 @@ func handle_movement(input_vector,jump_target_vector):
 	var snap = Vector2.DOWN * 32 if velocity.y>=0 else Vector2.UP
 	velocity=move_and_slide_with_snap(velocity,snap,Vector2.UP)
 	if position.y > 600:
-		if ridden:
-			position = player.respawn_point
-		else:
-			position=player.position
+		following=false
+		position = player.respawn_point
 		velocity=Vector2.ZERO
 		player.jumpCoords=[]
+		
 func setOffset(newOffset):
 	offset=newOffset
+	
 func setSpeed(newSpeed):
 	SPEED=newSpeed
+	
 func jump(speed):
 	position.y-=5
 	velocity.y-=speed
+	
 func mount(name):
 	player.riding=name
 	riddenBox.disabled=false
 	position=player.position
 	ridden=true
+	
 func unMount():
 	player.riding="none"
 	riddenBox.disabled=true
 	player.position.y-=20
 	ridden=false
+	
 func _input(event):
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index==BUTTON_RIGHT:
 		if ridden:
 			about_to_unmount=true
 			unMount()
+			
 func handleInput(event):
-	print("hi")
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index==BUTTON_LEFT:
 		following=!following
 # Called every frame. 'delta' is the elapsed time since the previous frame.
