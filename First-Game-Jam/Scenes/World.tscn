@@ -135,6 +135,14 @@ margin_right = 5001.68
 margin_bottom = 465.432
 custom_fonts/normal_font = ExtResource( 11 )
 text = "step on this to start the moving platform to your left"
+[node name="RichTextLabel8" type="RichTextLabel" parent="."]
+margin_left = 2968.0
+margin_top = 376.0
+margin_right = 3208.0
+margin_bottom = 440.0
+custom_fonts/normal_font = ExtResource( 11 )
+text = "The duck can swim in water
+"
 __meta__ = {
 "_edit_use_anchors_": false
 }
