@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Assets/FreeCuteTileset/sky.png" type="Texture" id=1]
 [ext_resource path="res://Assets/FreeCuteTileset/BG3.png" type="Texture" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://Assets/Theme.ogg" type="AudioStream" id=5]
 [ext_resource path="res://Chicken.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Checkpoint.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Box.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Duck.tscn" type="PackedScene" id=9]
 [ext_resource path="res://water.tres" type="TileSet" id=10]
 [ext_resource path="res://Assets/Pixel Font.tres" type="DynamicFont" id=11]
@@ -61,7 +60,7 @@ tile_data = PoolIntArray( 65535, 16, 0, 131071, 16, 0, 196607, 16, 0, 262143, 16
 tile_set = ExtResource( 14 )
 cell_size = Vector2( 1, 1 )
 format = 1
-tile_data = PoolIntArray( 10356115, 1, 0, 11994626, 0, 0, 12453178, 1, 0, 12518714, 1, 0, 14615976, 1, 0, 14615991, 1, 0, 15599415, 1, 0, 17302142, 0, 0, 17302340, 0, 0, 20447319, 0, 0, 20447545, 0, 0, 20447619, 0, 0, 20447690, 0, 0, 20448566, 0, 0, 20448925, 0, 0, 21498520, 0, 0, 21498683, 0, 0, 21890635, 1, 0, 21890636, 1, 0, 22546650, 0, 0, 22546974, 0, 0, 22938290, 1, 0, 22938469, 1, 0, 22938499, 1, 0, 25035826, 1, 0, 25886969, 2, 0, 25886970, 2, 0, 25952294, 2, 0, 26083508, 1, 0, 26083530, 1, 0, 26083550, 1, 0, 26083677, 1, 0, 26083775, 1, 0, 26083901, 1, 0, 26084657, 1, 0, 26084753, 1, 0, 26084862, 1, 0, 26084878, 1, 0, 26085037, 1, 0, 26085078, 1, 0, 27069211, 1, 0, 27069289, 1, 0, 27134639, 1, 0, 27134662, 1, 0, 27134805, 1, 0, 28051792, 2, 0, 28051984, 2, 0, 28182648, 1, 0, 28182753, 1, 0, 28182804, 1, 0, 28182903, 1, 0, 28182927, 1, 0, 28183108, 1, 0, 28183128, 1, 0 )
+tile_data = PoolIntArray( 10356115, 1, 0, 11994626, 0, 0, 12453178, 1, 0, 12518714, 1, 0, 14615976, 1, 0, 14615991, 1, 0, 15209222, 0, 0, 15599415, 1, 0, 17241247, 0, 0, 17302142, 0, 0, 17302340, 0, 0, 19336695, 0, 0, 20447319, 0, 0, 20447545, 0, 0, 20447619, 0, 0, 20447690, 0, 0, 20448566, 0, 0, 20448925, 0, 0, 20845294, 1, 0, 21498520, 0, 0, 21498683, 0, 0, 21890635, 1, 0, 21890636, 1, 0, 22546650, 0, 0, 22546974, 0, 0, 22938290, 1, 0, 22938469, 1, 0, 22938499, 1, 0, 22942954, 1, 0, 24645906, 0, 0, 24972783, 1, 0, 25035826, 1, 0, 25038457, 1, 0, 25886969, 2, 0, 25886970, 2, 0, 25952294, 2, 0, 26083508, 1, 0, 26083530, 1, 0, 26083550, 1, 0, 26083677, 1, 0, 26083775, 1, 0, 26083901, 1, 0, 26084657, 1, 0, 26084753, 1, 0, 26084862, 1, 0, 26084878, 1, 0, 26085037, 1, 0, 26085078, 1, 0, 27069211, 1, 0, 27069289, 1, 0, 27134639, 1, 0, 27134662, 1, 0, 27134805, 1, 0, 28051792, 2, 0, 28051984, 2, 0, 28182648, 1, 0, 28182753, 1, 0, 28182804, 1, 0, 28182903, 1, 0, 28182927, 1, 0, 28183108, 1, 0, 28183128, 1, 0, 29888414, 0, 0, 30281952, 1, 0, 31134452, 2, 0, 35590060, 1, 0, 35590101, 1, 0 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 margin_left = 456.0
@@ -160,6 +159,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="RichTextLabel10" type="RichTextLabel" parent="."]
+margin_left = 4845.96
+margin_top = 350.001
+margin_right = 5157.96
+margin_bottom = 414.001
+custom_fonts/normal_font = ExtResource( 11 )
+text = "Left clicking animals will make them stay
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Checkpoint2" parent="." instance=ExtResource( 7 )]
 position = Vector2( 1056, 368 )
 
@@ -182,20 +193,17 @@ position = Vector2( 4062.74, 191.523 )
 position = Vector2( 5527.16, 175.568 )
 
 [node name="Chicken" parent="." instance=ExtResource( 6 )]
-position = Vector2( 4976, 312 )
-
-[node name="Box" parent="." instance=ExtResource( 8 )]
-position = Vector2( 1128, 384 )
+position = Vector2( 1449.29, 157.276 )
 
 [node name="Duck" parent="." instance=ExtResource( 9 )]
-position = Vector2( 4936, 312 )
+position = Vector2( 3012.03, 428.043 )
 
 [node name="Mushroom" parent="." instance=ExtResource( 13 )]
-position = Vector2( 5080, 312 )
+position = Vector2( 2211.71, 428.884 )
 collision_layer = 8
 
 [node name="MovingPlatform" parent="." instance=ExtResource( 12 )]
-position = Vector2( 4171.6, 497.758 )
+position = Vector2( 4185.9, 393.487 )
 script = ExtResource( 19 )
 
 [node name="MovingPlatform2" parent="." instance=ExtResource( 12 )]
@@ -203,11 +211,11 @@ position = Vector2( 3982.1, 215.783 )
 script = ExtResource( 16 )
 
 [node name="MovingPlatform3" parent="." instance=ExtResource( 12 )]
-position = Vector2( 5456, 216 )
+position = Vector2( 5449.27, 186.569 )
 script = ExtResource( 20 )
 
 [node name="Bunny" parent="." instance=ExtResource( 3 )]
-position = Vector2( 5016, 304 )
+position = Vector2( 100.132, 393.976 )
 
 [node name="Camera2D" type="Camera2D" parent="Bunny"]
 visible = false

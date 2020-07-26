@@ -8,7 +8,7 @@ const SPEED = 250
 const GRAVITY = 30
 onready var ray = $RayCast2D
 var velocity = Vector2.ZERO
-var respawn_point = Vector2(500, 300)
+var respawn_point = Vector2(100, 393)
 var jumpCoords = []
 
 var equip
