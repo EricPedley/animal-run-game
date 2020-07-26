@@ -14,6 +14,7 @@ var following = false
 var ridden = false
 var offset = 100
 var about_to_unmount=false
+onready var sprite = $AnimatedSprite
 # Called when the node enters the scene tree for the first time.
 func move_to_player(input_vector,jump_target_vector):
 	about_to_unmount=false
@@ -37,10 +38,49 @@ func move_to_player(input_vector,jump_target_vector):
 		if target!=Vector2.ZERO:
 			input_vector.x = Vector2(target.x-position.x,target.y-position.y).x
 	return [input_vector,jump_target_vector]
+func handle_movement(input_vector,jump_target_vector):
+	var acceleration = 10
+	var deceleration = 50
+	if ridden:
+		acceleration=100
+		deceleration=100
+	if input_vector!=Vector2.ZERO:
+		velocity.x=velocity.move_toward(input_vector*SPEED,acceleration).x
+	elif is_on_floor():
+		velocity.x=velocity.move_toward(Vector2.ZERO,deceleration).x
+	velocity.y+=GRAVITY
+	
+	if is_on_floor() and is_on_wall():
+		jump(300)
+	if not sprite==null:
+		if velocity.x<0:
+			sprite.flip_h=false
+			sprite.play("Run")
+		elif velocity.x>0:
+			sprite.flip_h=true
+			sprite.play("Run")
+		else:
+			sprite.play("Idle")
+	if jump_target_vector!=Vector2.ZERO:
+		velocity=jump_target_vector
+	if Input.is_action_just_pressed("space") and ridden and is_on_floor():
+		jump(600)
+	var snap = Vector2.DOWN * 32 if velocity.y>=0 else Vector2.UP
+	velocity=move_and_slide_with_snap(velocity,snap,Vector2.UP)
+	if position.y > 600:
+		if ridden:
+			position = player.respawn_point
+		else:
+			position=player.position
+		velocity=Vector2.ZERO
+		player.jumpCoords=[]
 func setOffset(newOffset):
 	offset=newOffset
 func setSpeed(newSpeed):
 	SPEED=newSpeed
+func jump(speed):
+	position.y-=5
+	velocity.y-=speed
 func mount(name):
 	player.riding=name
 	riddenBox.disabled=false

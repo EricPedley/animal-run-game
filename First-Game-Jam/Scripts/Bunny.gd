@@ -42,7 +42,8 @@ func _physics_process(_delta):
 	if not sprite==null:
 		if is_on_floor() || (ray.is_colliding() == true && "Box" in ray.get_collider().name):
 			if(ray.is_colliding()):
-				print(ray.get_collider().name)
+				pass
+				#print(ray.get_collider().name)
 			
 			if velocity.x<0:
 				sprite.play("Run")
@@ -54,6 +55,7 @@ func _physics_process(_delta):
 			velocity.y=1
 			if Input.is_action_just_pressed("space"):
 				velocity.y=-500
+				position.y-=5
 				jumpCoords.append([position,velocity])
 				
 		else:
@@ -65,7 +67,8 @@ func _physics_process(_delta):
 	if dismountJump:
 		velocity.y-=600
 		dismountJump=false
-	velocity = move_and_slide(velocity,Vector2.UP)
+	var snap = Vector2.DOWN * 32 if velocity.y>=0 else Vector2.UP
+	velocity = move_and_slide_with_snap(velocity,snap,Vector2.UP)
 	if position.y > 600 :
 		respawn()
 	
