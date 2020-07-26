@@ -206,7 +206,7 @@ position = Vector2( 2217.46, 359.877 )
 collision_layer = 8
 
 [node name="MovingPlatform" parent="." instance=ExtResource( 12 )]
-position = Vector2( 4171.6, 497.758 )
+position = Vector2( 4175.6, 351.593 )
 script = ExtResource( 19 )
 
 [node name="MovingPlatform2" parent="." instance=ExtResource( 12 )]
@@ -214,7 +214,7 @@ position = Vector2( 3982.1, 215.783 )
 script = ExtResource( 16 )
 
 [node name="MovingPlatform3" parent="." instance=ExtResource( 12 )]
-position = Vector2( 5456, 216 )
+position = Vector2( 5464.5, 190.515 )
 script = ExtResource( 20 )
 
 [node name="Bunny" parent="." instance=ExtResource( 3 )]
