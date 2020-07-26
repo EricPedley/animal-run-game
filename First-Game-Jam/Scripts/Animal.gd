@@ -20,6 +20,7 @@ onready var sprite = $AnimatedSprite
 func move_to_player(input_vector,jump_target_vector):
 	about_to_unmount=false
 	if position.distance_to(player.position)>700:
+		player.jumpCoords=[]
 		if following:
 			position = player.position
 		elif freed:

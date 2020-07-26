@@ -19,4 +19,4 @@ func playIdle():
 	$AnimationPlayer.play("idle")
 
 func _on_Pressure_Pad3_body_entered(body):
-	$AnimationPlayer.play("GoUp")
+	$AnimationPlayer.play("UpDownOnce")
