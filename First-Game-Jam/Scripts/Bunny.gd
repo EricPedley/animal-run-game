@@ -62,7 +62,7 @@ func _physics_process(_delta):
 				sprite.play("Fall")
 				
 	if dismountJump:
-		velocity.y-=600
+		velocity.y-=400
 		dismountJump=false
 	var snap = Vector2.DOWN * 32 if velocity.y>=0 else Vector2.UP
 	velocity = move_and_slide_with_snap(velocity,snap,Vector2.UP)
