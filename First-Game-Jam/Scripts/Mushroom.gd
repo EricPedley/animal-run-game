@@ -32,6 +32,7 @@ func _physics_process(delta):
 #	pass
 
 func _on_Area2D_input_event(viewport, event, shape_idx):
+	handleInput(event)
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index==BUTTON_RIGHT:
 		if following and not ridden and not about_to_unmount:
 			mount("Mushroom")

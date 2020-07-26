@@ -12,6 +12,7 @@ onready var riddenBox = get_node("RiddenHitbox")
 var velocity = Vector2.ZERO
 var following = false
 var ridden = false
+var freed = false
 var offset = 100
 var about_to_unmount=false
 onready var sprite = $AnimatedSprite
@@ -21,8 +22,10 @@ func move_to_player(input_vector,jump_target_vector):
 	if following and position.distance_to(player.position)>700:
 		position = player.position
 	add_collision_exception_with(player)
-	if not following and box.overlaps_body(player):
+	if not freed and box.overlaps_body(player):
 		player.jumpCoords=[]
+		freed=true
+		$Cage.set_visible(false)
 		following=true
 		velocity.y=-200
 	if following:
@@ -96,6 +99,10 @@ func _input(event):
 		if ridden:
 			about_to_unmount=true
 			unMount()
+func handleInput(event):
+	print("hi")
+	if event is InputEventMouseButton and event.is_pressed() and event.button_index==BUTTON_LEFT:
+		following=!following
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

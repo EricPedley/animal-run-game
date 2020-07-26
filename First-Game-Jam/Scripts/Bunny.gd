@@ -41,9 +41,6 @@ func _physics_process(_delta):
 	velocity.y+=GRAVITY
 	if not sprite==null:
 		if is_on_floor() || (ray.is_colliding() == true && "Box" in ray.get_collider().name):
-			if(ray.is_colliding()):
-				pass
-				#print(ray.get_collider().name)
 			
 			if velocity.x<0:
 				sprite.play("Run")
