@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Assets/FreeCuteTileset/3x3.png" type="Texture" id=1]
 
@@ -71,10 +71,28 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, -150 ), Vector2( 0, 0 ) ]
 }
 
+[sub_resource type="Animation" id=6]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/path = NodePath("KinematicBody2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
+
 [node name="MovingPlatform" type="Node2D"]
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]
 motion/sync_to_physics = true
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
 shape = SubResource( 1 )
@@ -88,3 +106,4 @@ anims/DownUp = SubResource( 2 )
 anims/GoDown = SubResource( 3 )
 anims/GoUp = SubResource( 4 )
 anims/UpDown = SubResource( 5 )
+anims/idle = SubResource( 6 )

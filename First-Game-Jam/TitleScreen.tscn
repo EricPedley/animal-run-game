@@ -52,7 +52,7 @@ __meta__ = {
 }
 
 [node name="Start" type="Sprite" parent="."]
-position = Vector2( 512.673, 352 )
+position = Vector2( 512.673, 354.245 )
 scale = Vector2( 1, 1.07557 )
 texture = ExtResource( 1 )
 region_enabled = true

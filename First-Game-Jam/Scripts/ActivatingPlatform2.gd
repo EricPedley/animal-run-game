@@ -12,5 +12,10 @@ extends Node2D
 #	pass
 
 
+	
+
+
 func _on_Pressure_Pad2_body_entered(body):
 	$AnimationPlayer.play("DownUp")
+	pass # Replace with function body.
+

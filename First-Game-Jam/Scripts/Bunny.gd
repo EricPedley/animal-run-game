@@ -19,6 +19,7 @@ var dismountJump = false
 var riding = "none"
 var input_vector
 onready var sprite = $Sprite
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	ray.add_exception($TileMap)
@@ -92,6 +93,7 @@ func _input(event):
 
 func respawn():
 	position = respawn_point
+	get_node("../MovingPlatform3").playIdle()
 	
 func set_respawn(respawn):
 	respawn_point = respawn
