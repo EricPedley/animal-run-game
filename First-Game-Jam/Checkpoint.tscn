@@ -157,7 +157,7 @@ animations = [ {
 "speed": 15.0
 }, {
 "frames": [ ExtResource( 3 ) ],
-"loop": true,
+"loop": false,
 "name": "No Flag",
 "speed": 15.0
 }, {
@@ -168,6 +168,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=38]
+extents = Vector2( 2.74494, 22.3417 )
 
 [node name="Checkpoint" type="AnimatedSprite"]
 frames = SubResource( 37 )
@@ -177,6 +178,7 @@ script = ExtResource( 1 )
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( -7.54016, 9.02835 )
 shape = SubResource( 38 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

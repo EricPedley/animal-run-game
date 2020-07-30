@@ -14,15 +14,16 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	for collision in hitbox.get_overlapping_bodies ( ):
-		if(collision.name == "Bunny"):
+		if collision.name == "Bunny":
 			collision.set_respawn(position)
-			connect("animation_finished", self, "playFlag")
-			play("Flag UP")
-			
-func playFlag():
-	play("Flag")
+			play("Flag Up")
 
 
 
 
 
+
+
+func _on_Checkpoint_animation_finished():
+	if animation=="Flag Up":
+		play("Flag")

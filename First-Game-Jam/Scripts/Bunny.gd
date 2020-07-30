@@ -22,7 +22,7 @@ onready var sprite = $Sprite
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	ray.add_exception($TileMap)
+	ray.add_exception(get_node("../TileMap"))
 
 
 func _physics_process(_delta):
@@ -93,7 +93,6 @@ func _input(event):
 
 func respawn():
 	position = respawn_point
-	get_node("../MovingPlatform3").playIdle()
 	
 func set_respawn(respawn):
 	respawn_point = respawn

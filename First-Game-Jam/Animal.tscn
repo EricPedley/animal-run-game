@@ -33,6 +33,8 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=2]
 resource_name = "Following"
+length = 2.0
+step = 0.25
 tracks/0/type = "value"
 tracks/0/path = NodePath("Following:region_rect")
 tracks/0/interp = 1
@@ -64,14 +66,17 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ true ]
+"values": [ true, false, true, false, true, false, true, false ]
 }
 
 [sub_resource type="Animation" id=3]
 resource_name = "NotFollowing"
+length = 2.0
+loop = true
+step = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Following:region_rect")
 tracks/0/interp = 1
@@ -84,11 +89,25 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Rect2( 0, 0, 32, 32 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Following:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 24.671, 25.0424 )
 
 [node name="Animal" type="KinematicBody2D"]
+z_index = 1
+input_pickable = true
 script = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -98,8 +117,7 @@ anims/Following = SubResource( 2 )
 anims/NotFollowing = SubResource( 3 )
 
 [node name="Following" type="Sprite" parent="."]
-visible = false
-position = Vector2( 0.374565, -51.1368 )
+position = Vector2( 0.374565, -45.2439 )
 scale = Vector2( 0.625423, 0.625423 )
 texture = ExtResource( 2 )
 region_enabled = true
@@ -116,4 +134,4 @@ texture = ExtResource( 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 0.314987, -11.3393 )
 shape = SubResource( 4 )
-[connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]
+[connection signal="input_event" from="." to="." method="_on_Animal_input_event"]

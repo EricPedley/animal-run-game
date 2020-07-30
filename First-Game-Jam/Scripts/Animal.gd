@@ -7,7 +7,7 @@ extends KinematicBody2D
 var SPEED = 300
 const GRAVITY = 30
 onready var player = get_node("../Bunny")
-onready var box = get_node("Area2D")
+onready var cage = get_node("Area2D")
 onready var riddenBox = get_node("RiddenHitbox")
 var velocity = Vector2.ZERO
 var following = false
@@ -18,10 +18,12 @@ var about_to_unmount=false
 var animalName = ""
 func setAnimalName(newName):
 	animalName=newName
+	print(newName)
+	#connect("input_event",self,"_on_Animal_input_event")
 onready var sprite = $AnimatedSprite
 # Called when the node enters the scene tree for the first time.
-
 func movementStuffWrapper():
+	about_to_unmount=false
 	var input_vector = Vector2.ZERO
 	var jump_target_vector=Vector2.ZERO
 	if not ridden and player!=null:#code for pseudo-pathfinding
@@ -35,17 +37,13 @@ func movementStuffWrapper():
 
 
 func move_to_player(input_vector,jump_target_vector):
-	about_to_unmount=false
-	if position.distance_to(player.position)>700:
-		if following:
-			position = player.position
-		elif freed:
-			position = player.respawn_point
+	if freed and position.distance_to(player.position)>700:
+		respawn()
 	add_collision_exception_with(player)
-	if not freed and box.overlaps_body(player):
+	if not freed and cage.overlaps_body(player):
+		$AnimationPlayer.play("Following")
 		player.jumpCoords=[]
 		freed=true
-		$Cage.set_visible(false)
 		following=true
 		velocity.y=-200
 	if following:
@@ -94,11 +92,17 @@ func handle_movement(input_vector,jump_target_vector):
 	var snap = Vector2.DOWN * 32 if velocity.y>=0 else Vector2.UP
 	velocity=move_and_slide_with_snap(velocity,snap,Vector2.UP)
 	if position.y > 600:
-		following=false
-		position = player.respawn_point
-		velocity=Vector2.ZERO
-		player.jumpCoords=[]
+		respawn()
 		
+func respawn():
+	$AnimationPlayer.play("NotFollowing")
+	following=false
+	position = player.respawn_point
+	position.y-=50
+	position.x+=rand_range(-100,100)
+	velocity=Vector2.ZERO
+	player.jumpCoords=[]
+	
 func setOffset(newOffset):
 	offset=newOffset
 	
@@ -128,14 +132,22 @@ func _input(event):
 			unMount()
 			
 func handleInput(event):
-	if event is InputEventMouseButton and event.is_pressed() and event.button_index==BUTTON_LEFT:
-		following=!following
+	if event is InputEventMouseButton and event.is_pressed():
+		if event.button_index==BUTTON_LEFT:
+			following=!following
+			if following:
+				$AnimationPlayer.play("Following")
+			else:
+				$AnimationPlayer.play("NotFollowing")
+		elif event.button_index==BUTTON_RIGHT:
+			if freed and not ridden and not about_to_unmount:
+				mount(animalName)
 		
-func _on_Area2D_input_event(viewport, event, shape_idx):
-	handleInput(event)
-	if event is InputEventMouseButton and event.is_pressed() and event.button_index==BUTTON_RIGHT:
-		if freed and not ridden and not about_to_unmount:
-			mount(animalName)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_Animal_input_event(_viewport, event, _shape_idx):
+	print("Hhey!")
+	handleInput(event)
