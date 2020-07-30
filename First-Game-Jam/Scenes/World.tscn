@@ -579,11 +579,9 @@ script = ExtResource( 16 )
 position = Vector2( 5460.65, 335.075 )
 script = ExtResource( 20 )
 
-[node name="Box" parent="." instance=ExtResource( 8 )]
-position = Vector2( 1128, 384 )
-
 [node name="Bunny" parent="." instance=ExtResource( 3 )]
-position = Vector2( 179.565, 297.739 )
+position = Vector2( 189.948, 288.772 )
+z_index = 1
 
 [node name="Camera2D" type="Camera2D" parent="Bunny"]
 visible = false
@@ -594,6 +592,10 @@ limit_top = 0
 limit_bottom = 613
 drag_margin_h_enabled = true
 editor_draw_limits = true
+
+[node name="Box" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1128, 384 )
+z_index = 1
 
 [node name="Cat" parent="." instance=ExtResource( 17 )]
 position = Vector2( -32, 216 )
