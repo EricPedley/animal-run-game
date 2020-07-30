@@ -15,12 +15,14 @@ var ridden = false
 var freed = false
 var offset = 100
 var about_to_unmount=false
+var animalName = ""
+func setAnimalName(newName):
+	animalName=newName
 onready var sprite = $AnimatedSprite
 # Called when the node enters the scene tree for the first time.
 func move_to_player(input_vector,jump_target_vector):
 	about_to_unmount=false
 	if position.distance_to(player.position)>700:
-		player.jumpCoords=[]
 		if following:
 			position = player.position
 		elif freed:
@@ -112,6 +114,12 @@ func _input(event):
 func handleInput(event):
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index==BUTTON_LEFT:
 		following=!following
+		
+func _on_Area2D_input_event(viewport, event, shape_idx):
+	handleInput(event)
+	if event is InputEventMouseButton and event.is_pressed() and event.button_index==BUTTON_RIGHT:
+		if freed and not ridden and not about_to_unmount:
+			mount(animalName)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
