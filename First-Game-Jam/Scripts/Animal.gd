@@ -20,6 +20,20 @@ func setAnimalName(newName):
 	animalName=newName
 onready var sprite = $AnimatedSprite
 # Called when the node enters the scene tree for the first time.
+
+func movementStuffWrapper():
+	var input_vector = Vector2.ZERO
+	var jump_target_vector=Vector2.ZERO
+	if not ridden and player!=null:#code for pseudo-pathfinding
+		var vectors = move_to_player(input_vector,jump_target_vector)
+		input_vector=vectors[0]
+		jump_target_vector=vectors[1]
+	else:
+		input_vector=player.input_vector
+	handle_movement(input_vector,jump_target_vector)
+
+
+
 func move_to_player(input_vector,jump_target_vector):
 	about_to_unmount=false
 	if position.distance_to(player.position)>700:
@@ -58,10 +72,12 @@ func handle_movement(input_vector,jump_target_vector):
 		velocity.x=velocity.move_toward(input_vector*SPEED,acceleration).x
 	elif velocity.y>=0:
 		velocity.x=velocity.move_toward(Vector2.ZERO,deceleration).x
-	velocity.y+=GRAVITY
-	
-	if is_on_floor() and is_on_wall():
-		jump(300)
+	if is_on_floor() :
+		if is_on_wall():
+			jump(300)
+	else:
+		velocity.y+=GRAVITY
+		
 	if not sprite==null:
 		if velocity.x<0:
 			sprite.flip_h=false
